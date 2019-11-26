@@ -1922,7 +1922,11 @@ class Association(threading.Thread):
         while True:
             # Wait for DIMSE message, should be either a C-GET or
             #   C-MOVE response or a C-STORE request
-            cx_id, rsp = self.dimse.get_msg(block=True)
+            cx_id, rsp = self.dimse.get_msg(block=False)
+
+            if cx_id, rsp == None, None:
+                return None, None
+
             # Used to describe the response in the log output
             rsp_type = rsp.__class__.__name__.replace('_', '-')
             rsp_name = {'C-GET' : 'Get', 'C-MOVE' : 'Move'}
