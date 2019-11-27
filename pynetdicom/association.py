@@ -1925,6 +1925,7 @@ class Association(threading.Thread):
             cx_id, rsp = self.dimse.get_msg(block=False)
 
             if (cx_id, rsp) == (None, None):
+                time.sleep(0.1)
                 yield None, None
 
             # Used to describe the response in the log output
