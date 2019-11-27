@@ -1924,8 +1924,8 @@ class Association(threading.Thread):
             #   C-MOVE response or a C-STORE request
             cx_id, rsp = self.dimse.get_msg(block=False)
 
-            if cx_id, rsp == None, None:
-                return None, None
+            if (cx_id, rsp) == (None, None):
+                yield None, None
 
             # Used to describe the response in the log output
             rsp_type = rsp.__class__.__name__.replace('_', '-')
