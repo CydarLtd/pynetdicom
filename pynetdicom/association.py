@@ -1927,6 +1927,7 @@ class Association(threading.Thread):
             if (cx_id, rsp) == (None, None):
                 time.sleep(0.1)
                 yield None, None
+                continue
 
             # Used to describe the response in the log output
             rsp_type = rsp.__class__.__name__.replace('_', '-')
